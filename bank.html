@@ -16,8 +16,14 @@
                 <br>
                 <input type="password" placeholder="Enter Your Password" class="form-control">
                 <br>
-                <button class="btn btn-success">Enter</button>
+                <button id="button-id" class="btn btn-success">Enter</button>
             </div>
         </div>
+        <script>
+            const loginBtn = document.getElementById("button-id").addEventListener("click", function(){
+                const whenEnter = document.getElementById("main-area");
+                whenEnter.style.display = none;
+            })
+        </script>
     </body>
     </html>
