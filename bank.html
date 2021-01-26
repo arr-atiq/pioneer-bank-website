@@ -27,7 +27,7 @@
             <div class="col-md-4">
                 <div class="deposit status">
                     <h5>Deposit</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="currentAmount">00</span> </h2>
                 </div>
             </div>
             <div class="col-md-4">
@@ -47,9 +47,10 @@
             <div class="col-md-6">
                 <div class="login-area">
                     <h4>Deposit</h4>
-                    <input type="text" class="form-control" placeholder="$ amount want to you deposit">
+                    <input id="depositInput" type="text" class="form-control"
+                        placeholder="$ amount want to you deposit">
                     <br>
-                    <button class="btn btn-success">Deposit</button>
+                    <button id="depositBtn" class="btn btn-success">Deposit</button>
                 </div>
             </div>
             <div class="col-md-6">
@@ -57,7 +58,7 @@
                     <h4>Withdraw</h4>
                     <input type="text" class="form-control" placeholder="$ amount want to you withdraw">
                     <br>
-                    <button class="btn btn-success">Withdraw</button>
+                    <button id="withdrawBtn" class="btn btn-success">Withdraw</button>
                 </div>
             </div>
         </div>
@@ -68,6 +69,19 @@
             whenEnter.style.display = "none";
             const transactionArea = document.getElementById("transaction-area");
             transactionArea.style.display = "block";
+        });
+
+        // login Button event handler finished^^^
+
+        const depositButton = document.getElementById("depositBtn").addEventListener("click", function () {
+            const depositNumber = document.getElementById("depositInput").value;
+            const depositConvert = parseFloat(depositNumber);
+            
+            const depositCurrent = document.getElementById("currentAmount").innerText;
+            const depositCurrentModified = parseFloat(depositCurrent);
+            const totalDeposit = depositConvert + depositCurrentModified;
+            document.getElementById("currentAmount").innerText = totalDeposit;
+            document.getElementById("depositInput").value = "";
         });
     </script>
 </body>
